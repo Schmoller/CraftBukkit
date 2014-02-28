@@ -27,6 +27,7 @@ import org.bukkit.craftbukkit.CraftChunk;
 import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.craftbukkit.util.CraftMagicNumbers;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.BlockVector;
@@ -134,6 +135,15 @@ public class CraftBlock implements Block {
             return success;
         }
     }
+    
+    @Override
+    public boolean setType(MaterialData data) {
+        return setTypeIdAndData(data.getItemTypeId(), data.getData(), true);
+    }
+    
+    public boolean setType(MaterialData data, boolean applyPhysics) {
+        return setTypeIdAndData(data.getItemTypeId(), data.getData(), applyPhysics);
+    }
 
     public Material getType() {
         return Material.getMaterial(getTypeId());
@@ -143,6 +153,10 @@ public class CraftBlock implements Block {
     @Override
     public int getTypeId() {
         return CraftMagicNumbers.getId(chunk.getHandle().getType(this.x & 0xF, this.y & 0xFF, this.z & 0xF));
+    }
+    
+    public MaterialData getTypeData() {
+        return getType().getNewData(getData());
     }
 
     public byte getLightLevel() {

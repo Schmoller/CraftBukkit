@@ -137,11 +137,11 @@ public class CraftBlock implements Block {
     }
     
     @Override
-    public boolean setType(MaterialData data) {
+    public boolean setTypeData(MaterialData data) {
         return setTypeIdAndData(data.getItemTypeId(), data.getData(), true);
     }
     
-    public boolean setType(MaterialData data, boolean applyPhysics) {
+    public boolean setTypeData(MaterialData data, boolean applyPhysics) {
         return setTypeIdAndData(data.getItemTypeId(), data.getData(), applyPhysics);
     }
 

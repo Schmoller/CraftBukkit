@@ -135,12 +135,12 @@ public class CraftBlock implements Block {
             return success;
         }
     }
-    
+
     @Override
     public boolean setTypeData(MaterialData data) {
         return setTypeIdAndData(data.getItemTypeId(), data.getData(), true);
     }
-    
+
     public boolean setTypeData(MaterialData data, boolean applyPhysics) {
         return setTypeIdAndData(data.getItemTypeId(), data.getData(), applyPhysics);
     }
@@ -154,7 +154,7 @@ public class CraftBlock implements Block {
     public int getTypeId() {
         return CraftMagicNumbers.getId(chunk.getHandle().getType(this.x & 0xF, this.y & 0xFF, this.z & 0xF));
     }
-    
+
     public MaterialData getTypeData() {
         return getType().getNewData(getData());
     }

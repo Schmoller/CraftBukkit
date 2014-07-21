@@ -143,8 +143,7 @@ public class CraftBlock implements Block {
     public boolean setTypeData(MaterialData data, boolean applyPhysics) {
         if(getTypeId() != data.getItemTypeId()) {
             return setTypeIdAndData(data.getItemTypeId(), data.getData(), applyPhysics);
-        }
-        else {
+        } else {
              setData(data.getData(), applyPhysics);
              return true;
         }
